@@ -2,6 +2,10 @@
 ![qbitwide](https://user-images.githubusercontent.com/65448292/132729866-9bc231cf-0a8a-4dfb-9d06-b55742f15a48.png)
 [![Discord](https://img.shields.io/discord/698720578055700650?label=&logo=discord&logoColor=ffffff&color=7389D8&labelColor=6A7EC2&style=rounded-square)](https://discord.gg/B2NHWMHsJz)
 
+[![GitHub latest release version](https://img.shields.io/github/v/release/Qbitsimulations/QBT321.svg?style=for-the-badge)](https://github.com/Qbitsimulations/QBT321/releases/latest)
+[![Github All Releases download count](https://img.shields.io/github/downloads/Qbitsimulations/QBT321/total?style=for-the-badge&color=7c74b8)](https://github.com/Qbitsimulations/QBT321/releases/latest)
+[![GitHub contributors](https://img.shields.io/github/contributors/Qbitsimulations/QBT321.svg?style=for-the-badge&color=29abe2)](https://github.com/Qbitsimulations/QBT321/graphs/contributors)
+
 Welcome to the Qbit Simulations A321EC, this is a public Airbus A321 reskin of the FlyByWire A321NX (FBW A32NX), intending to have an alternative to the payware versions available for Microsoft Flight Simulator. 
 **Important note**
 This project has the aim to explore the FBW ecosystem, as such once they officially announce a Airbus A321 or similar the project will be imediatelly abandoned.
