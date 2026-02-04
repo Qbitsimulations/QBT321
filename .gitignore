@@ -55,6 +55,7 @@
 /qbt-321xlr/src/base/qbitsim-aircraft-a321-253/SimObjects/Airplanes/A321_XLR/model/*.gltf
 /qbt-321xlr/src/systems/instruments/aceBundles
 /qbt-321xlr/src/systems/instruments/buildSrc/custom/*
+/qbt-321xlr/src/model/a321_fuse/*
 
 !/scripts/**
 
