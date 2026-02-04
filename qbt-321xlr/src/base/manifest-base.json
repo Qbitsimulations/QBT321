@@ -1,0 +1,14 @@
+{
+  "creator": "Qbit Simulations",
+  "release_notes": {
+    "neutral": {
+      "LastUpdate": "",
+      "OlderHistory": ""
+    }
+  },
+  "title": "Qbit Simulations Airbus A321neo",
+  "dependencies": [],
+  "content_type": "AIRCRAFT",
+  "minimum_game_version": "1.31.20",
+  "manufacturer": "Airbus"
+}
