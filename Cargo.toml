@@ -1,0 +1,22 @@
+[workspace]
+resolver = "2"
+exclude = ["a32nx"]
+
+members = [
+    "build-321xlr/src/wasm/systems/a320_systems",
+    "build-321xlr/src/wasm/systems/a320_systems_wasm",
+    "build-common/src/wasm/systems/systems",
+    "build-common/src/wasm/systems/systems_wasm",
+]
+
+[profile.release]
+lto = true
+strip = true
+
+[profile.dev]
+# We enable some basic optimization to prevent stack overflows during testing (flybywiresim/a32nx#7631)
+# However, if this interferes with your ability to debug locally you can disable it here
+opt-level=1
+lto = false
+debug-assertions=true
+debug=true
