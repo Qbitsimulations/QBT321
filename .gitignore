@@ -9,6 +9,8 @@
 !*/
 !/.github/**
 !/.vscode/**
+!/flybywire/
+!/flybywire/**
 
 !.editorconfig
 !.eslintrc
