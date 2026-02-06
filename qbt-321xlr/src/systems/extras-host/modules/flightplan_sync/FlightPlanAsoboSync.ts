@@ -66,7 +66,8 @@ export class FlightPlanAsoboSync {
   }
 
   init(): void {
-    NavigationDatabaseService.activeDatabase = new NavigationDatabase(NavigationDatabaseBackend.Msfs);
+    // FIXME this should only ever be used within the FMGC
+    NavigationDatabaseService.activeDatabase = new NavigationDatabase(this.bus, NavigationDatabaseBackend.Msfs);
 
     const sub = this.bus.getSubscriber<
       FlightPlanEvents & SyncFlightPlanEvents & PerformanceDataFlightPlanSyncEvents<A320FlightPlanPerformanceData>

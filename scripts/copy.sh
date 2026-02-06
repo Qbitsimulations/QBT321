@@ -52,8 +52,6 @@ mkdir -p ./build-321xlr/out/qbitsim-aircraft-a321-253/config/QBT_321N/a321-253ny
 cp -r ./flybywire/fbw-a32nx/src/base/flybywire-aircraft-a320-neo/html_ui/Fonts/fbw-a32nx/. ./build-321xlr/out/qbitsim-aircraft-a321-253/html_ui/Fonts/QBT_321N
 cp -r ./flybywire/fbw-a32nx/src/base/flybywire-aircraft-a320-neo/html_ui/Images/fbw-a32nx/. ./build-321xlr/out/qbitsim-aircraft-a321-253/html_ui/Images/QBT_321N
 cp -r ./flybywire/fbw-a32nx/src/base/flybywire-aircraft-a320-neo/html_ui/JS/fbw-a32nx/. ./build-321xlr/out/qbitsim-aircraft-a321-253/html_ui/JS/QBT_321N
-cp -r ./flybywire/fbw-a32nx/src/base/flybywire-aircraft-a320-neo/html_ui/Pages/A32NX_Core/. ./build-321xlr/out/qbitsim-aircraft-a321-253/html_ui/Pages/QBT_321N_Core
-cp -r ./flybywire/fbw-a32nx/src/base/flybywire-aircraft-a320-neo/html_ui/Pages/A32NX_Utils/. ./build-321xlr/out/qbitsim-aircraft-a321-253/html_ui/Pages/QBT_321N_Utils
 cp -r ./flybywire/fbw-a32nx/src/base/flybywire-aircraft-a320-neo/html_ui/Pages/VCockpit/Instruments/Airliners/FlyByWire_A320_Neo/EFB/. ./build-321xlr/out/qbitsim-aircraft-a321-253/html_ui/Pages/VCockpit/Instruments/Airliners/Qbit_A321_Neo/EFB
 cp -r ./flybywire/fbw-a32nx/src/base/flybywire-aircraft-a320-neo/html_ui/Pages/VCockpit/Instruments/Airliners/FlyByWire_A320_Neo/FCU/. ./build-321xlr/out/qbitsim-aircraft-a321-253/html_ui/Pages/VCockpit/Instruments/Airliners/Qbit_A321_Neo/FCU
 cp -r ./flybywire/fbw-a32nx/src/base/flybywire-aircraft-a320-neo/ModelBehaviorDefs/A32NX/. ./build-321xlr/out/qbitsim-aircraft-a321-253/ModelBehaviorDefs/A32NX   
