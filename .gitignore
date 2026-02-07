@@ -83,3 +83,4 @@ target/
 .pnpm-store/
 .rollup.cache/
 .vscode/
+scripts/.old
