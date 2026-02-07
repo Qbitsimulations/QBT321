@@ -70,7 +70,7 @@
 node_modules/
 obj/
 target/
-*.tgz
+*.tgz   
 *.wasm
 **/build-common/
 /build-321xlr/

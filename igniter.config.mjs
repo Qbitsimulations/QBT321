@@ -23,61 +23,32 @@ export default new TaskOfTasks('all', [
         new TaskOfTasks(
             'build',
             [
-                new ExecTask('model', 'npm run build:model', [
+               /* new ExecTask('model', 'npm run build:model', [
                     'build-321xlr/src/model',
                     'build-321xlr/out/qbitsim-aircraft-a321-253/SimObjects/AirPlanes/A321_XLR/model',
-                ]),
+                ]),*/
                 new ExecTask('behavior', 'npm run build:behavior', [
                     'build-321xlr/src/behavior',
-                    'build-321xlr/out/qbitsim-aircraft-a321-253/SimObjects/AirPlanes/A321_XLR/behavior',
+                    'build-321xlr/out/qbitsim-aircraft-a321-253/ModelBehaviorDefs/A32NX/generated',
                 ]),
-                new TaskOfTasks('atsu', [
-                                    new ExecTask('common', 'npm run build:atsu-common', [
-                                        'build-321xlr/src/systems/atsu/common',
-                                        'build-321xlr/out/qbitsim-aircraft-a321-253/html_ui/JS/QBT_321N/atsu/common.js',
-                                    ]),
-                                    new ExecTask('fmsclient', 'npm run build:atsu-fms-client', [
-                                        'build-321xlr/src/systems/atsu/common',
-                                        'build-321xlr/src/systems/atsu/fmsclient',
-                                        'build-321xlr/out/qbitsim-aircraft-a321-253/html_ui/JS/QBT_321N/atsu/fmsclient.js',
-                                    ]),
-                                ]),
+                
                 new ExecTask('extras-host', 'npm run build:extras-host', [
                     'build-321xlr/src/systems/extras-host',
-                    'build-321xlr/out/qbitsim-aircraft-a321-253/html_ui/Pages/VCockpit/Instruments/QBT_321N/ExtrasHost'
-                ]),
-                new ExecTask('fmgc', 'npm run build:fmgc', [
-                    'build-321xlr/src/systems/fmgc',
-                    'build-321xlr/out/qbitsim-aircraft-a321-253/html_ui/JS/QBT_321N/fmgc',
-                ]),
-                new ExecTask('failures', 'npm run build:failures', [
-                    'build-321xlr/src/systems/failures',
-                    'build-321xlr/out/qbitsim-aircraft-a321-253/html_ui/JS/QBT_321N/failures/failures.js'
-                ]),
-                new ExecTask('sentry-client', 'npm run build:sentry-client', [
-                    'build-321xlr/src/systems/sentry-client',
-                    'build-321xlr/out/qbitsim-aircraft-a321-253/html_ui/JS/QBT_321N/sentry-client'
-                ]),
-                new ExecTask('simbridge-client', 'npm run build:simbridge-client', [
-                    'build-321xlr/src/systems/simbridge-client',
-                    'build-321xlr/out/qbitsim-aircraft-a321-253/html_ui/JS/QBT_321N/simbridge-client'
+                    'build-321xlr/out/qbitsim-aircraft-a321-253/html_ui/Pages/VCockpit/Instruments/QBT_321N/ExtrasHost',
+                    'build-common/src/systems/shared/src/extras',
                 ]),
                 new ExecTask('systems-host', 'npm run build:systems-host', [
                     'build-321xlr/src/systems/systems-host',
                     'build-common/src/systems/datalink',
-                    'build-321xlr/out/qbitsim-aircraft-a321-253/html_ui/Pages/VCockpit/Instruments/QBT_321N/SystemsHost'
-                ]),
-                new ExecTask('tcas', 'npm run build:tcas', [
-                    'build-321xlr/src/systems/tcas',
-                    'build-321xlr/out/qbitsim-aircraft-a321-253/html_ui/JS/QBT_321N/tcas'
-                ]),
-                new TaskOfTasks('instruments', getInstrumentsIgniterTasks(), true)
+                    'build-321xlr/out/qbitsim-aircraft-a321-253/html_ui/Pages/VCockpit/Instruments/QBT_321N/SystemsHost',
+                ]),                
+                //new TaskOfTasks('instruments', getInstrumentsIgniterTasks(), true)
             ],
             true,
         ),
 
         // Group all WASM build tasks together but separate from the rest of the tasks as build run more stable like this.
-        new TaskOfTasks(
+        /*new TaskOfTasks(
             'wasm',
             [
                 new ExecTask('systems', 'npm run build:systems', [
@@ -112,6 +83,6 @@ export default new TaskOfTasks('all', [
             'dist',
             [new ExecTask('metadata', 'npm run build:metadata'), new ExecTask('manifests', 'npm run build:manifest')],
             true
-        )
+        )*/
     ])
 ]);
