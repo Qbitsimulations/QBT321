@@ -36,11 +36,11 @@ while [ $# -gt 0 ]; do
 shift
 done
 
-A321_WASM_OUT_DIR="../build-321xlr/out/qbitsim-aircraft-a321-253/SimObjects/AirPlanes/A321_XLR/panel"
-if [ ! -d "$A321_WASM_OUT_DIR" ]; then
-  echo "$A321_WASM_OUT_DIR directory does not exist."
-  mkdir -p $A321_WASM_OUT_DIR
-  echo "$A321_WASM_OUT_DIR directory created."
+QBT_321NY_WASM_OUT_DIR="../build-321xlr/out/qbitsim-aircraft-a321-253/SimObjects/AirPlanes/A321_XLR/panel"
+if [ ! -d "$QBT_321NY_WASM_OUT_DIR" ]; then
+  echo "$QBT_321NY_WASM_OUT_DIR directory does not exist."
+  mkdir -p $QBT_321NY_WASM_OUT_DIR
+  echo "$QBT_321NY_WASM_OUT_DIR directory created."
 fi
 
 echo "Toolchain versions:"
@@ -50,10 +50,10 @@ wasm-ld --version
 echo ""
 
 echo "Building extra-backend with CMAKE..."
-cmake -DCMAKE_TOOLCHAIN_FILE=scripts/cmake/DockerToolchain.cmake -B${OUTPUT_DIR} -DCMAKE_BUILD_TYPE=${CONFIG} ../ || (echo "CMake config failed" && exit 1)
-cmake --build ${OUTPUT_DIR} --config ${CONFIG} ${CLEAN} -j ${PARALLEL} || (echo "CMake build failed" && exit 1)
+cmake -DCMAKE_TOOLCHAIN_FILE=scripts/cmake/DockerToolchain.cmake -B${OUTPUT_DIR} -DCMAKE_BUILD_TYPE=${CONFIG} ../ || (echo "CMake config failed"; exit 1)
+cmake --build ${OUTPUT_DIR} --config ${CONFIG} ${CLEAN} -j ${PARALLEL} || (echo "CMake build failed"; exit 1)
 echo ""
 
 echo "WASM module built successfully!"
 echo ""
-exit 0 
+exit 0

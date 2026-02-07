@@ -39,7 +39,7 @@ const titleSuffix = ` (${titlePostfix})`;
 
 // This copies one of two prepared DDS files from the src folder
 // (src/Textures/decals 4k/) to the aircraft folder
-// (flybywire-aircraft-a320-neo/SimObjects/AirPlanes/FlyByWire_A320_NEO/TEXTURE/)
+// (qbitsim-aircraft-a321-253/SimObjects/AirPlanes/FlyByWire_A320_NEO/TEXTURE/)
 // based on the current branch the build is executed from.
 // Stable and Master will get the DDS with the yellow INOP label.
 // All other branches get the DDS with the red INOP label.
@@ -49,7 +49,7 @@ const titleSuffix = ` (${titlePostfix})`;
 
 const MS_FILETIME_EPOCH = 116444736000000000n;
 
-const QBT_321NY_SRC = path.resolve(__dirname, '..', 'qbt-321xlr/src');
+const QBT_321NY_SRC = path.resolve(__dirname, '..', 'build-321xlr/src');
 const QBT_321NY_OUT = path.resolve(__dirname, '..', 'build-321xlr/out/qbitsim-aircraft-a321-253');
 
 function createPackageFiles(baseDir, manifestBaseFilename) {
@@ -61,37 +61,23 @@ function createPackageFiles(baseDir, manifestBaseFilename) {
         contentEntries.push({
             path: path.relative(baseDir, filename.replace(path.sep, '/')),
             size: Number(stat.size),
-            date: Number(stat.mtimeNs / 100n + MS_FILETIME_EPOCH)
+            date: Number((stat.mtimeNs / 100n) + MS_FILETIME_EPOCH),
         });
         totalPackageSize += Number(stat.size);
     }
 
-    fs.writeFileSync(
-        path.join(baseDir, 'layout.json'),
-        JSON.stringify(
-            {
-                content: contentEntries
-            },
-            null,
-            2
-        )
-    );
+    fs.writeFileSync(path.join(baseDir, 'layout.json'), JSON.stringify({
+        content: contentEntries,
+    }, null, 2));
 
-    const manifestBase = require(path.join(QBT_321NY_SRC, 'base', manifestBaseFilename));
+    const manifestBase = require(path.join(A32NX_SRC, 'base', manifestBaseFilename));
 
-    fs.writeFileSync(
-        path.join(baseDir, 'manifest.json'),
-        JSON.stringify(
-            {
-                ...manifestBase,
-                title: manifestBase.title + titleSuffix,
-                package_version: packageInfo.version + `-${buildInfo?.commitHash}`,
-                total_package_size: totalPackageSize.toString().padStart(20, '0')
-            },
-            null,
-            2
-        )
-    );
+    fs.writeFileSync(path.join(baseDir, 'manifest.json'), JSON.stringify({
+        ...manifestBase,
+        title: manifestBase.title + titleSuffix,
+        package_version: packageInfo.version + `-${buildInfo?.commitHash}`,
+        total_package_size: totalPackageSize.toString().padStart(20, '0'),
+    }, null, 2));
 }
 
 createPackageFiles(QBT_321NY_OUT, 'manifest-base.json');

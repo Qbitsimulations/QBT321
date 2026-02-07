@@ -12,4 +12,4 @@ const outFile = 'build-321xlr/out/qbitsim-aircraft-a321-253/html_ui/Pages/VCockp
 
 // process.env.FBW_TYPECHECK = "1";
 
-esbuild.build(createModuleBuild('build-321xlr', undefined, path.join(__dirname, './index.ts'), outFile, __dirname));
+esbuild.build(createModuleBuild('qbitsim-a321-253', undefined, path.join(__dirname, './index.ts'), outFile, __dirname));

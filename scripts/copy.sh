@@ -84,6 +84,10 @@ cp -r ./qbt-321xlr/src/wasm/. ./build-321xlr/src/wasm
 cp -r ./qbt-321xlr/.env ./build-321xlr/.env
 cp -r ./qbt-321xlr/mach.config.js ./build-321xlr/mach.config.js
 
+# ingame panels
+mkdir -p qbt-ingamepanels-checklist-fix
+cp -r ./flybywire/fbw-ingamepanels-checklist-fix/. ./qbt-ingamepanels-checklist-fix
+
 : <<'END_COMMENT'
 # copy from FBW A32NX source and 737 into one src
 cp -r ./flybywire/fbw-a32nx/src/behavior/. ./build-321xlr/src/behavior

@@ -1,17 +1,16 @@
 #!/bin/bash
 
-set -ex
+set -e
 
 # store current file ownership
 ORIGINAL_USER_ID=$(stat -c '%u' /external)
 ORIGINAL_GROUP_ID=$(stat -c '%g' /external)
 
+[[ -z "${USE_4K_TEXTURES}" ]] && USE_4K_TEXTURES='false'
+
 # set ownership to root to fix cargo/rust build (when run as github action)
 if [ "${GITHUB_ACTIONS}" == "true" ]; then
   chown -R root:root /external
-  rm -rf /external/flybywire
-  rm -rf /external/build-321xlr/src
-  rm -rf /external/qbt-321xlr/src
 fi
 
 # Loop through the arguments
@@ -22,14 +21,34 @@ for arg in "$@"; do
     echo "Removing out directories..."
     rm -rf /external/build-321xlr/out
     rm -rf /external/build-321xlr/bundles
+    rm -rf /external/qbt-ingamepanels-checklist-fix/out
+  # If the argument is "-4k", build with 4k textures instead of maximum resolution
+  elif [ "$arg" = "-4k" ]; then
+    USE_4K_TEXTURES="true"
   else
     # Otherwise, add the arg it to the new array
     args+=("$arg")
   fi
 done
 
-# run build
-time npx igniter -r QBT_321NY "$@"
+
+
+#use ci config if github action
+if [ "${GITHUB_ACTIONS}" == "true" ]; then
+  # select build tasks for assigned texture resolution
+  if [ "${USE_4K_TEXTURES}" == "true" ]; then
+    time npx igniter -r "^(?!.*local-build)(?!.*8K).*" "${args[@]}"
+  else
+    time npx igniter -r "^(?!.*local-build)(?!.*4K).*" "${args[@]}"
+  fi
+else
+  # select build tasks for assigned texture resolution
+  if [ "${USE_4K_TEXTURES}" == "true" ]; then
+    time npx igniter -r "^(?!.*ci-build)(?!.*8K).*" "${args[@]}"
+  else
+    time npx igniter -r "^(?!.*ci-build)(?!.*4K).*" "${args[@]}"
+  fi
+fi
 
 # restore ownership (when run as github action)
 if [ "${GITHUB_ACTIONS}" == "true" ]; then

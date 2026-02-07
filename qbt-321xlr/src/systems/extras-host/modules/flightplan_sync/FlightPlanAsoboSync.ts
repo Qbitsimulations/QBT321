@@ -1,3 +1,4 @@
+// @ts-strict-ignore
 // Copyright (c) 2021-2023 FlyByWire Simulations
 //
 // SPDX-License-Identifier: GPL-3.0
@@ -14,13 +15,6 @@ import {
   SyncFlightPlanEvents,
 } from '@fmgc/flightplanning/sync/FlightPlanEvents';
 import {
-  A320FlightPlanPerformanceData,
-  FlightPlanIndex,
-  NavigationDatabase,
-  NavigationDatabaseBackend,
-  NavigationDatabaseService,
-} from '@fmgc/index';
-import {
   EventBus,
   FacilityType,
   FacilityLoader,
@@ -33,6 +27,10 @@ import {
 } from '@microsoft/msfs-sdk';
 import { ApproachType as MSApproachType } from '../../../../../../build-common/src/systems/navdata/client/backends/Msfs/FsTypes';
 import { FacilityCache } from '../../../../../../build-common/src/systems/navdata/client/backends/Msfs/FacilityCache';
+import { NavigationDatabaseService } from '@fmgc/flightplanning/NavigationDatabaseService';
+import { NavigationDatabase, NavigationDatabaseBackend } from '@fmgc/NavigationDatabase';
+import { A320FlightPlanPerformanceData } from '@fmgc/flightplanning/plans/performance/FlightPlanPerformanceData';
+import { FlightPlanIndex } from '@fmgc/flightplanning/FlightPlanManager';
 
 export class FlightPlanAsoboSync {
   private isReady = false;
