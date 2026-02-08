@@ -1,66 +1,80 @@
-{
-    "root": true,
-    "env": {
-      "browser": true,
-      "es2021": true
-    },
-    "ignorePatterns": [
-        "/flybywire/**",
-        "/src/**",
-        "/qbt-321xlr/src/project/PackageSources/html_ui/Pages/VCockpit/Instruments/QBT_737NG/**"
+// Copyright (c) 2021-2023 FlyByWire Simulations
+//
+// SPDX-License-Identifier: GPL-3.0
+
+'use strict';
+
+const path = require('path');
+module.exports = {
+  env: { browser: true },
+  root: true,
+  extends: [
+    'eslint:recommended',
+    'plugin:prettier/recommended',
+    // 'plugin:@typescript-eslint/recommended', -- Disabled as it is complex to fix, needs to be done bit by bit
+    'plugin:@typescript-eslint/eslint-recommended',
+    // 'plugin:react-hooks/recommended', -- Disabled as it is complex to fix, needs to be done bit by bit, and we are moving away from react
+    // 'plugin:react/recommended', -- Disabled as it is complex to fix, needs to be done bit by bit, and we are moving away from react
+  ],
+  plugins: ['@typescript-eslint', 'prettier', 'react-hooks', 'react', 'tailwindcss'],
+  parser: '@typescript-eslint/parser',
+  parserOptions: {
+    ecmaVersion: 2021,
+    sourceType: 'script',
+    requireConfigFile: false,
+  },
+  overrides: [
+    {
+      files: [
+        '.eslintrc.js',
+        'vitest.config.mjs',
+        'scripts/**/*.js',
+        '**/mach.config.js',
+        '**/rollup.config.js',
+        '**/tailwind.config.js',
+        '**/jest.config.js',
       ],
-      // DO NOT CHANGE THIS FILE (unless you are an admin) (if admin, make sure you change the same file in the latest asobo branch as well)
-      "rules": {
-    "indent": [
-      "error",
-      4,
+      env: {
+        node: true,
+      },
+      rules: {
+        '@typescript-eslint/no-var-requires': 'off',
+      },
+    },
+  ],
+  settings: {
+    tailwindcss: {
+      groupByResponsive: true,
+      config: path.join(__dirname, 'build-common/src/systems/instruments/src/EFB/tailwind.config.js'),
+    },
+    react: { version: 'detect' },
+  },
+  ignorePatterns: ['build-common/src/typings/*', 'fbw-ingamepanels-checklist-fix/*'],
+  rules: {
+    'prettier/prettier': ['error', {}, { usePrettierrc: true }],
+
+    'no-unused-vars': 'off',
+    '@typescript-eslint/no-unused-vars': [
+      'error',
       {
-        "SwitchCase": 1
-      }
+        varsIgnorePattern: 'FSComponent|_.*',
+        argsIgnorePattern: '_.*',
+      },
     ],
-    "linebreak-style": "off",
-    // No quotes option is really fully consistent, so probably best to jsut not enforce either type
-    "quotes": "off",
-    "semi": ["error", "always"],
-    "curly": ["error", "all"],
-    "brace-style": ["error", "1tbs"],
-    "space-before-blocks": "error",
-    "space-before-function-paren": [
-      "error",
-      {
-        "anonymous": "always",
-        "named": "never",
-        "asyncArrow": "always"
-      }
-    ],
-    "space-in-parens": "error",
-    "space-infix-ops": "error",
-    "space-unary-ops": "error",
-    "keyword-spacing": "error",
-    "no-irregular-whitespace": "error",
-    "no-trailing-spaces": "error",
-    "semi-spacing": "error",
-    "no-mixed-spaces-and-tabs": "error",
-    "no-multi-spaces": "error",
-    // There are too many vars that cant be autofixed
-    "no-var": "off",
-    "prefer-const": [
-      "error",
-      {
-        "destructuring": "all"
-      }
-    ],
-    // The vanilla code already has over 100 console.logs, but maybe we can enable this in master and delete them there
-    "no-console": "off",
-    "no-debugger": "error",
-    "eol-last": ["error", "always"],
-    "no-multiple-empty-lines": [
-      "error",
-      {
-        "max": 1,
-        "maxBOF": 0,
-        "maxEOF": 0
-      }
-    ]
-  }
-}
+
+    'tailwindcss/classnames-order': 'error',
+    'tailwindcss/enforces-negative-arbitrary-values': 'error',
+    'tailwindcss/enforces-shorthand': 'off',
+    'tailwindcss/migration-from-tailwind-2': 'error',
+    'tailwindcss/no-contradicting-classname': 'error',
+  },
+  globals: {
+    Simplane: 'readonly',
+    SimVar: 'readonly',
+    Utils: 'readonly',
+    JSX: 'readonly',
+    Coherent: 'readonly',
+    ViewListener: 'readonly',
+    RegisterViewListener: 'readonly',
+  },
+};
