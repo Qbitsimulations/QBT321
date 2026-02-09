@@ -1,0 +1,7 @@
+{
+  "index": "./index.tsx",
+  "isInteractive": false,
+  "extraDeps": [
+    "/build-321xlr/src/systems/tcas/src"
+  ]
+}

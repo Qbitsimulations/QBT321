@@ -9,8 +9,8 @@ export default new TaskOfTasks('all', [
         new TaskOfTasks(
             'preparation',
             [
-                new ExecTask('copy-cargo-config', 'npm run build:copy-cargo-config'),
-                new ExecTask('copy-cmake-config', 'npm run build:copy-cmake-config'),
+                //new ExecTask('copy-cargo-config', 'npm run build:copy-cargo-config'),
+                //new ExecTask('copy-cmake-config', 'npm run build:copy-cmake-config'),
                 new TaskOfTasks("localization", [
                         new ExecTask("efb-translation","npm run build:efb-translation"),
                         new ExecTask("locPak-translation", "npm run build:locPak-translation"),
@@ -42,7 +42,7 @@ export default new TaskOfTasks('all', [
                     'build-common/src/systems/datalink',
                     'build-321xlr/out/qbitsim-aircraft-a321-253/html_ui/Pages/VCockpit/Instruments/QBT_321N/SystemsHost',
                 ]),                
-                //new TaskOfTasks('instruments', getInstrumentsIgniterTasks(), true)
+                new TaskOfTasks('instruments', getInstrumentsIgniterTasks(), true)
             ],
             true,
         ),

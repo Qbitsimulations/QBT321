@@ -38,4 +38,5 @@ fi
 # restore ownership (when run as github action)
 if [ "${GITHUB_ACTIONS}" == "true" ]; then
   chown -R ${ORIGINAL_USER_ID}:${ORIGINAL_GROUP_ID} /external
+  pnpm i
 fi
